@@ -10,15 +10,20 @@ import { Course } from "../../interfaces/course"
 import {formatDuration} from '../../helpers/formatDuration'
 import {formatDistance} from '../../helpers/formatDistance'
 import {formatDate} from '../../helpers/formatDate'
-import {formatTme} from '../../helpers/formatTime'
+import {formatTime} from '../../helpers/formatTime'
 
 interface PropsItemList{
   route: Course
+  setShowSelectRoute: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ItemList = ({route}: PropsItemList)=>{
+const ItemList = ({route, setShowSelectRoute}: PropsItemList)=>{
 
   const {t} = useTranslation()
+
+  const handleSimulateRoute = () => {
+    setShowSelectRoute(true)
+  }
 
   return(
     <li className="container itemList">
@@ -39,15 +44,15 @@ const ItemList = ({route}: PropsItemList)=>{
         </div>
         <div className="detalsItem">
           <span>{t('Data de partida')} {`${formatDate(route.start_at)}`}</span>
-          <span>{t('Horario de partida')} {`${formatTme(route.start_at)}`}</span>
+          <span>{t('Horario de partida')} {`${formatTime(route.start_at)}`}</span>
         </div>
         <div className="detalsItem">
           <span>{t('Data de chegada')} {`${formatDate(route.end_at)}`}</span>
-          <span>{t('Horario de chegada')} {`${formatTme(route.end_at)}`}</span>
+          <span>{t('Horario de chegada')} {`${formatTime(route.end_at)}`}</span>
         </div>
       </div>
       <div className="btnSimulateContainer">
-        <button>Simular Rota</button>
+        <button onClick={() => handleSimulateRoute()}>Simular Rota</button>
       </div>
     </li>
   )
