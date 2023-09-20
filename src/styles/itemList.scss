@@ -7,9 +7,20 @@
   border-bottom: 1px solid $color-primary-gray;
   padding-top: 1rem;
 
-  .title{
-    font-size: 1rem;
-    font-weight: 400;
+  .containerTitle{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    .title{
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    p{
+      font-size: .75rem;
+      margin-top: .25rem;
+    }
   }
 
   .details{
@@ -19,6 +30,13 @@
     align-items: start;
     justify-content: center;
     gap: 0.25rem;
+
+    .detalsItem{
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+    }
   }
 
   .btnSimulateContainer{

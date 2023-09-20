@@ -3,23 +3,42 @@ import { useTranslation } from "react-i18next"
 //Style
 import '../../styles/itemList.scss'
 
-const ItemList = ()=>{
+//Interface
+import { Course } from "../../interfaces/course"
+
+interface PropsItemList{
+  route: Course
+}
+
+const ItemList = ({route}: PropsItemList)=>{
 
   const {t} = useTranslation()
 
   return(
     <li className="container itemList">
-      <div>
-        <h3 className="title">{t('Origem')} Bh</h3>
-        <h3 className="title">{t('Destino')} Betim</h3>
+      <div className="containerTitle">
+        <div>
+          <h3 className="title">{t('Origem')}</h3>
+          <p>{`${route.gps[0].address}`}</p>
+        </div>
+        <div>
+          <h3 className="title">{t('Destino')}</h3>
+          <p> {`${route.gps[route.gps.length - 1].address}`}</p>
+        </div>
       </div>
       <div className="details">
-        <span>{t('Duracao')} 30min</span>
-        <span>{t('Distancia')} 10 KM</span>
-        <span>{t('Data de partida')} 20 de Setembro</span>
-        <span>{t('Horario de partida')} 14:25</span>
-        <span>{t('Data de chegada')} 20 de Setembro</span>
-        <span>{t('Horario de chegada')} 15:23</span>
+        <div className="detalsItem">
+          <span>{t('Duracao')} {`${route.duration}`}</span>
+          <span>{t('Distancia')} {`${route.distance}`}</span>
+        </div>
+        <div className="detalsItem">
+          <span>{t('Data de partida')} {`${route.start_at}`}</span>
+          <span>{t('Horario de partida')} {`${route.start_at}`}</span>
+        </div>
+        <div className="detalsItem">
+          <span>{t('Data de chegada')} {`${route.end_at}`}</span>
+          <span>{t('Horario de chegada')} {`${route.end_at}`}</span>
+        </div>
       </div>
       <div className="btnSimulateContainer">
         <button>Simular Rota</button>
