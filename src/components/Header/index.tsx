@@ -16,6 +16,7 @@ const Header = () => {
 
   return (
     <header className='header'>
+      <div className="headerContainer">
       <div>
         <img
           src={logo}
@@ -27,6 +28,7 @@ const Header = () => {
         <button onClick={()=> handleChangeLanguage('pt')}>PT</button>
         <button onClick={()=> handleChangeLanguage('esp')}>ESP</button>
         <button onClick={()=> handleChangeLanguage('en')}>ING</button>
+      </div>
       </div>
     </header>
   );

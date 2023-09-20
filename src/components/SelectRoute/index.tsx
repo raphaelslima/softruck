@@ -37,10 +37,8 @@ const SelectRoute = ()=>{
     setRoutes(newRoutesArray)
   },[])
 
-  console.log(routes)
-
   return(
-    <div className="container">
+    <div className="containerRoutes">
       {
         showSelectRoute ? (
           <div className="containerBtnSelect">
@@ -59,7 +57,7 @@ const SelectRoute = ()=>{
             </div>
             <ul className="container">
               {routes.map((route, i) => (
-                <ItemList route={route} key={i}/>
+                <ItemList route={route} key={i} setShowSelectRoute={setShowSelectRoute}/>
               ))}
             </ul>
           </div>
