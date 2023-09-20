@@ -10,6 +10,7 @@ import { Course } from "../../interfaces/course"
 import {formatDuration} from '../../helpers/formatDuration'
 import {formatDistance} from '../../helpers/formatDistance'
 import {formatDate} from '../../helpers/formatDate'
+import {formatTme} from '../../helpers/formatTime'
 
 interface PropsItemList{
   route: Course
@@ -38,11 +39,11 @@ const ItemList = ({route}: PropsItemList)=>{
         </div>
         <div className="detalsItem">
           <span>{t('Data de partida')} {`${formatDate(route.start_at)}`}</span>
-          <span>{t('Horario de partida')} {`${route.start_at}`}</span>
+          <span>{t('Horario de partida')} {`${formatTme(route.start_at)}`}</span>
         </div>
         <div className="detalsItem">
           <span>{t('Data de chegada')} {`${formatDate(route.end_at)}`}</span>
-          <span>{t('Horario de chegada')} {`${route.end_at}`}</span>
+          <span>{t('Horario de chegada')} {`${formatTme(route.end_at)}`}</span>
         </div>
       </div>
       <div className="btnSimulateContainer">
