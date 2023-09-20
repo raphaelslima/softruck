@@ -15,7 +15,6 @@ a{
 
 body{
   width: 100%;
-  background-color: #ccc;
 }
 
 .container-max{
@@ -24,4 +23,10 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+main{
+  padding: 1rem;
+  width: 100%;
+  max-width: 1280px;
 }

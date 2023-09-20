@@ -1,0 +1,47 @@
+@import "../styles/variables.scss";
+
+.itemList{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  border-bottom: 1px solid $color-primary-gray;
+  padding-top: 1rem;
+
+  .title{
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .details{
+    font-size: .75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .btnSimulateContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+
+    button{
+      padding: .5rem 1rem;
+      background: $color-primary-blue;
+      color: $color-primary-white;
+      border: none;
+      border-radius: 8px;
+      transition: all .5s;
+    }
+
+    button:hover{
+      transform: scale(1.08);
+      color: $color-primary-blue;
+      background: $color-primary-white;
+      border: 1px solid $color-primary-blue;
+    }
+  }
+}
