@@ -11,10 +11,16 @@ li{
 
 a{
   outline: none;
+  cursor: pointer;
 }
 
 body{
   width: 100%;
+  background-color: #cccc;
+}
+
+button{
+  cursor: pointer;
 }
 
 .container-max{
