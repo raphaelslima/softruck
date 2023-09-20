@@ -6,6 +6,9 @@ import '../../styles/itemList.scss'
 //Interface
 import { Course } from "../../interfaces/course"
 
+//Helpers
+import {formatDuration} from '../../helpers/formatDuration'
+
 interface PropsItemList{
   route: Course
 }
@@ -28,7 +31,7 @@ const ItemList = ({route}: PropsItemList)=>{
       </div>
       <div className="details">
         <div className="detalsItem">
-          <span>{t('Duracao')} {`${route.duration}`}</span>
+          <span>{t('Duracao')} {`${formatDuration(route.duration)}`}</span>
           <span>{t('Distancia')} {`${route.distance}`}</span>
         </div>
         <div className="detalsItem">
