@@ -1,6 +1,19 @@
+import {useTranslation} from 'react-i18next'
+
+//Img
 import logo from '../../assets/logo.jpg';
+
+//Style
 import '../../styles/header.scss';
+
 const Header = () => {
+
+  const {i18n} = useTranslation()
+
+  const handleChangeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+  }
+
   return (
     <header className='header'>
       <div>
@@ -11,9 +24,9 @@ const Header = () => {
         />
       </div>
       <div className='internationalization'>
-        <button>PT</button>
-        <button>ESP</button>
-        <button>ING</button>
+        <button onClick={()=> handleChangeLanguage('pt')}>PT</button>
+        <button onClick={()=> handleChangeLanguage('esp')}>ESP</button>
+        <button onClick={()=> handleChangeLanguage('en')}>ING</button>
       </div>
     </header>
   );
