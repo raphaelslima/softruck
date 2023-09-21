@@ -56,8 +56,8 @@ const SelectRoute = ()=>{
               </button>
             </div>
             <ul className="container">
-              {routes.map((route, i) => (
-                <ItemList route={route} key={i} setShowSelectRoute={setShowSelectRoute}/>
+              {routes.map((routeSelected, i) => (
+                <ItemList routeSelected={routeSelected} key={i} setShowSelectRoute={setShowSelectRoute}/>
               ))}
             </ul>
           </div>

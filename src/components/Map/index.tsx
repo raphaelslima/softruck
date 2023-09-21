@@ -1,59 +1,52 @@
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import "../../styles/map.scss"
 
-
 import { useSpring } from "@react-spring/web";
+import { RouteContext } from "../../context/RouteContext";
 
+const Map = ()=> {
+  const [googleMap, setGoogleMap] = useState<google.maps.Map>();
+  const {route} = useContext(RouteContext)
+  const [curPos, setCurPos] = useState(0);
+  const [curRot, setCurRot] = useState(0);
+  const [coordinate, setCoordinate] = useState({lat: -19.939549, lng: -43.938730});
 
 type Position = {
   lat: number;
   lng: number;
 };
 
-const positions: Position[] = [
-  { lat: -27.593066, lng: -48.549793 },
-  { lat: -27.592933, lng: -48.55106 },
-  { lat: -27.592864, lng: -48.55197 },
-  { lat: -27.593375, lng: -48.551891 },
-  { lat: -27.593758, lng: -48.551762 },
-  { lat: -27.593752, lng: -48.551125 },
-  { lat: -27.593749, lng: -48.550606 },
-  { lat: -27.59375, lng: -48.550152 },
-  { lat: -27.594069, lng: -48.550223 },
-  { lat: -27.594522, lng: -48.550324 },
-];
+const positions: Position[] = [];
 
-const center = {
-  lat: positions[0].lat,
-  lng: positions[0].lng,
-};
+route.gps.forEach(cord => {
+  positions.push(
+    {
+      lat: cord.latitude,
+      lng: cord.longitude
+    }
+  )
+})
 
-
-const Map = ()=> {
-  const [googleMap, setGoogleMap] = useState<google.maps.Map>();
-  const [curPos, setCurPos] = useState(0);
-  const [curRot, setCurRot] = useState(0);
-  const [coordinate, setCoordinate] = useState(center);
-  const props = useSpring({
-    val: 0,
-    from: { val: 1 },
-    config: { duration: 1000 },
-    onChange: () => {
-        const value = props.val.get();
-        if (curPos > 0) {
-            const latDiff =
-                (positions[curPos].lat - positions[curPos - 1].lat) * value;
-            const lngDiff =
-                (positions[curPos].lng - positions[curPos - 1].lng) * value;
-            const newCoord = {
-                lat: positions[curPos].lat - latDiff,
-                lng: positions[curPos].lng - lngDiff,
-            };
-            setCoordinate(newCoord);
-        }
-    },
+const props = useSpring({
+  val: 0,
+  from: { val: 1 },
+  config: { duration: 1000 },
+  onChange: () => {
+      const value = props.val.get();
+      if (curPos > 0) {
+          const latDiff =
+              (positions[curPos].lat - positions[curPos - 1].lat) * value;
+          const lngDiff =
+              (positions[curPos].lng - positions[curPos - 1].lng) * value;
+          const newCoord = {
+              lat: positions[curPos].lat - latDiff,
+              lng: positions[curPos].lng - lngDiff,
+          };
+          setCoordinate(newCoord);
+      }
+  },
 });
 
   const getRotation = (cPos: Position, nPos: Position) => {
@@ -84,7 +77,7 @@ const Map = ()=> {
       setTimeout(() => {
           doUpdate();
       }, 1500);
-  }, [curPos]);
+  }, [route, curPos]);
 
   return(
     <div className='containerMap'>
@@ -97,7 +90,10 @@ const Map = ()=> {
           }}
           mapContainerStyle={{ width: '100%', height: '100%'}}
           zoom={17}
-          center={center}
+          center={coordinate}
+          options={{
+            disableDefaultUI: true
+          }}
       >
           {googleMap && (
               <Marker
@@ -110,7 +106,7 @@ const Map = ()=> {
                       scale: 0.6,
                       anchor: new google.maps.Point(22, 43),
                   }}
-                  options={{ map: googleMap }}
+                  options={{ map: googleMap}}
               />
           )}
       </GoogleMap>
