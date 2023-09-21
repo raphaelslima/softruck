@@ -1,6 +1,7 @@
 //Components
 import Header from "./components/Header"
 import SelectRoute from "./components/SelectRoute"
+import Map from "./components/Map"
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <Header/>
       <main>
       <SelectRoute/>
+      <Map/>
       </main>
     </div>
   )
