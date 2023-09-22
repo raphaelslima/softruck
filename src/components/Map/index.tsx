@@ -1,16 +1,22 @@
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
+import { useSpring } from "@react-spring/web";
 
+//Styles
 import "../../styles/map.scss"
 
-import { useSpring } from "@react-spring/web";
+//Context
 import { RouteContext } from "../../context/RouteContext";
+
+//Helpers
+import { formatSpeed } from "../../helpers/formatSpeed";
 
 const Map = ()=> {
   const [googleMap, setGoogleMap] = useState<google.maps.Map>();
   const {route} = useContext(RouteContext)
   const [curPos, setCurPos] = useState(0);
   const [curRot, setCurRot] = useState(0);
+  const [speed, setSpeed] = useState(0);
   const [coordinate, setCoordinate] = useState({lat: -19.939549, lng: -43.938730});
 
 type Position = {
@@ -76,11 +82,19 @@ const props = useSpring({
   useEffect(() => {
       setTimeout(() => {
           doUpdate();
+          setSpeed(formatSpeed(route.gps[curPos].speed))
       }, 1500);
   }, [route, curPos]);
 
   return(
     <div className='containerMap'>
+      {
+        route.distance !== 0 && (
+          <div className="containerShowSpeed">
+            <span>Velocidade: {speed} Km/h</span>
+          </div>
+        )
+      }
       <LoadScript
         googleMapsApiKey={`${import.meta.env.VITE_GOOGLE_API_KEY}`}
       >
