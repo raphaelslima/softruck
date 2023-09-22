@@ -7,7 +7,6 @@ export interface routeContextInterface{
   setRoute: Dispatch<SetStateAction<Course>>,
   runningSimulate: boolean,
   setRunningSimulate: Dispatch<SetStateAction<boolean>>
-
 }
 
 const defaultSate = {
