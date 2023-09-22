@@ -32,7 +32,7 @@ const resources = {
             "Data de chegada" : "Data de chegada:",
             "Horario de chegada": "Horário de chegada:",
             "Velocidade": "velocidad",
-            "Parar simulacao": "Detener simulación"
+            "Parar simulacao": "Parar simulação"
         }
     },
     esp: {
@@ -48,7 +48,7 @@ const resources = {
           "Data de chegada" : "Fecha de llegada:",
           "Horario de chegada": "Hora de llegada:",
           "Velocidade": "Velocidade",
-          "Parar simulacao": "Parar simulação"
+          "Parar simulacao": "Detener simulación"
       }
   },
 }

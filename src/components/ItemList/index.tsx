@@ -23,12 +23,13 @@ interface PropsItemList{
 
 const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
 
-  const {setRoute} = useContext(RouteContext)
+  const {setRoute, setRunningSimulate} = useContext(RouteContext)
 
   const {t} = useTranslation()
 
   const handleSimulateRoute = (routeSelected: Course) => {
     setShowSelectRoute(true)
+    setRunningSimulate(true)
     if(routeSelected) setRoute(routeSelected)
   };
 

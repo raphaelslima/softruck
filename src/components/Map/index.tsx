@@ -17,11 +17,10 @@ import {AiOutlineClose} from 'react-icons/ai'
 
 const Map = ()=> {
   const [googleMap, setGoogleMap] = useState<google.maps.Map>();
-  const {route} = useContext(RouteContext)
+  const {route, runningSimulate, setRunningSimulate} = useContext(RouteContext)
   const [curPos, setCurPos] = useState(0);
   const [curRot, setCurRot] = useState(0);
   const [speed, setSpeed] = useState(0);
-  const [stopSimulate, setStopSimulate] = useState(true);
   const [coordinate, setCoordinate] = useState({lat: -19.939549, lng: -43.938730});
   const {t} = useTranslation()
 
@@ -95,13 +94,13 @@ const props = useSpring({
   return(
     <div className='containerMap'>
       {
-        !stopSimulate && (
+        runningSimulate && (
           <div>
             <div className="containerShowSpeed">
               <span>{t("Velocidade")}: {speed} Km/h</span>
             </div>
             <div className="containerStopSimulate">
-              <button onClick={()=> setStopSimulate(false)}>{t('Parar simulacao')} <AiOutlineClose size={16}/></button>
+              <button onClick={()=> setRunningSimulate(false)}>{t('Parar simulacao')} <AiOutlineClose size={16}/></button>
             </div>
           </div>
         )

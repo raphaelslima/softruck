@@ -4,7 +4,10 @@ import { Course } from "../interfaces/course";
 
 export interface routeContextInterface{
   route: Course,
-  setRoute: Dispatch<SetStateAction<Course>>
+  setRoute: Dispatch<SetStateAction<Course>>,
+  runningSimulate: boolean,
+  setRunningSimulate: Dispatch<SetStateAction<boolean>>
+
 }
 
 const defaultSate = {
@@ -15,7 +18,9 @@ const defaultSate = {
     duration: 0,
     gps: []
   },
-  setRoute: (route: Course) => route
+  setRoute: (route: Course) => route,
+  runningSimulate: false,
+  setRunningSimulate: (runningSimulate: boolean) => runningSimulate
 } as routeContextInterface
 
 export const RouteContext = createContext(defaultSate)
@@ -34,8 +39,10 @@ export default function RouteProvider({children} : RouteProviderProps){
     gps: []
   })
 
+  const [runningSimulate, setRunningSimulate] = useState(false)
+
   return(
-    <RouteContext.Provider value={{route, setRoute}}>
+    <RouteContext.Provider value={{route, setRoute, runningSimulate, setRunningSimulate}}>
       {children}
     </RouteContext.Provider>
   )
