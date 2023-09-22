@@ -29,6 +29,43 @@ type Position = {
   lng: number;
 };
 
+useEffect(() => {
+  if(runningSimulate){
+    setTimeout(() => {
+      doUpdate();
+      if(route.gps[curPos]) setSpeed(formatSpeed(route.gps[curPos].speed))
+  }, 1500);
+  } else{
+    setCurPos(0)
+  }
+}, [route, curPos, runningSimulate]);
+
+const doUpdate = () => {
+  if (curPos + 1 >= route.gps.length){
+    setRunningSimulate(false)
+    return
+  }
+
+  const newRot = getRotation({
+    lat: route.gps[curPos].latitude, lng: route.gps[curPos].longitude},
+    {lat: route.gps[curPos + 1].latitude, lng: route.gps[curPos + 1].longitude});
+  setCurRot(newRot);
+  setCurPos(curPos + 1);
+  props.val.reset();
+  props.val.start();
+
+};
+
+
+const getRotation = (cPos: Position, nPos: Position) => {
+  if (!cPos || !nPos) {
+      return 0;
+  }
+  const latDiff = cPos.lat - nPos.lat;
+  const lngDiff = cPos.lng - nPos.lng;
+  return (Math.atan2(lngDiff, latDiff) * 180.0) / Math.PI;
+};
+
 const props = useSpring({
   val: 0,
   from: { val: 1 },
@@ -48,41 +85,6 @@ const props = useSpring({
       }
   },
 });
-
-  const getRotation = (cPos: Position, nPos: Position) => {
-      if (!cPos || !nPos) {
-          return 0;
-      }
-      const latDiff = cPos.lat - nPos.lat;
-      const lngDiff = cPos.lng - nPos.lng;
-      return (Math.atan2(lngDiff, latDiff) * 180.0) / Math.PI;
-  };
-
-  const animate = (newCurPos: number) => {
-      const newRot = getRotation({
-        lat: route.gps[curPos].latitude, lng: route.gps[curPos].longitude},
-        {lat: route.gps[newCurPos].latitude, lng: route.gps[newCurPos].longitude});
-      setCurRot(newRot);
-      setCurPos(newCurPos);
-      props.val.reset();
-      props.val.start();
-  };
-
-  const doUpdate = () => {
-      const newCurPos = curPos + 1;
-      if (newCurPos >= route.gps.length) return;
-
-      animate(newCurPos);
-  };
-
-  useEffect(() => {
-    if(runningSimulate){
-      setTimeout(() => {
-        doUpdate();
-        if(route.gps[curPos]) setSpeed(formatSpeed(route.gps[curPos].speed))
-    }, 1500);
-    }
-  }, [route, curPos]);
 
   return(
     <div className='containerMap'>
