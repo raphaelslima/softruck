@@ -85,10 +85,12 @@ const props = useSpring({
   };
 
   useEffect(() => {
+    if(runningSimulate){
       setTimeout(() => {
-          doUpdate();
-          setSpeed(formatSpeed(route.gps[curPos].speed))
-      }, 1500);
+        doUpdate();
+        setSpeed(formatSpeed(route.gps[curPos].speed))
+    }, 1500);
+    }
   }, [route, curPos]);
 
   return(
