@@ -1,5 +1,6 @@
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next"
 import { useSpring } from "@react-spring/web";
 
 //Styles
@@ -11,13 +12,18 @@ import { RouteContext } from "../../context/RouteContext";
 //Helpers
 import { formatSpeed } from "../../helpers/formatSpeed";
 
+//Icons
+import {AiOutlineClose} from 'react-icons/ai'
+
 const Map = ()=> {
   const [googleMap, setGoogleMap] = useState<google.maps.Map>();
   const {route} = useContext(RouteContext)
   const [curPos, setCurPos] = useState(0);
   const [curRot, setCurRot] = useState(0);
   const [speed, setSpeed] = useState(0);
+  const [stopSimulate, setStopSimulate] = useState(true);
   const [coordinate, setCoordinate] = useState({lat: -19.939549, lng: -43.938730});
+  const {t} = useTranslation()
 
 type Position = {
   lat: number;
@@ -89,9 +95,14 @@ const props = useSpring({
   return(
     <div className='containerMap'>
       {
-        route.distance !== 0 && (
-          <div className="containerShowSpeed">
-            <span>Velocidade: {speed} Km/h</span>
+        !stopSimulate && (
+          <div>
+            <div className="containerShowSpeed">
+              <span>{t("Velocidade")}: {speed} Km/h</span>
+            </div>
+            <div className="containerStopSimulate">
+              <button onClick={()=> setStopSimulate(false)}>{t('Parar simulacao')} <AiOutlineClose size={16}/></button>
+            </div>
           </div>
         )
       }

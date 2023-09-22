@@ -14,7 +14,9 @@ const resources = {
             "Data de partida": "Departure date:",
             "Horario de partida": "Departure time:",
             "Data de chegada" : "Arrival date:",
-            "Horario de chegada": "Arrival time:"
+            "Horario de chegada": "Arrival time:",
+            "Velocidade": "Speed",
+            "Parar simulacao": "Stop simulate"
         }
     },
     pt: {
@@ -28,7 +30,9 @@ const resources = {
             "Data de partida": "Data de partida:",
             "Horario de partida": "Horário de partida:",
             "Data de chegada" : "Data de chegada:",
-            "Horario de chegada": "Horário de chegada:"
+            "Horario de chegada": "Horário de chegada:",
+            "Velocidade": "velocidad",
+            "Parar simulacao": "Detener simulación"
         }
     },
     esp: {
@@ -42,7 +46,9 @@ const resources = {
           "Data de partida": "Fecha de salida:",
           "Horario de partida": "Hora de salida:",
           "Data de chegada" : "Fecha de llegada:",
-          "Horario de chegada": "Hora de llegada:"
+          "Horario de chegada": "Hora de llegada:",
+          "Velocidade": "Velocidade",
+          "Parar simulacao": "Parar simulação"
       }
   },
 }
