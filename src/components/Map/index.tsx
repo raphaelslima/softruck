@@ -29,17 +29,6 @@ type Position = {
   lng: number;
 };
 
-const positions: Position[] = [];
-
-route.gps.forEach(cord => {
-  positions.push(
-    {
-      lat: cord.latitude,
-      lng: cord.longitude
-    }
-  )
-})
-
 const props = useSpring({
   val: 0,
   from: { val: 1 },
@@ -48,12 +37,12 @@ const props = useSpring({
       const value = props.val.get();
       if (curPos > 0) {
           const latDiff =
-              (positions[curPos].lat - positions[curPos - 1].lat) * value;
+              (route.gps[curPos].latitude - route.gps[curPos - 1].latitude) * value;
           const lngDiff =
-              (positions[curPos].lng - positions[curPos - 1].lng) * value;
+              (route.gps[curPos].longitude - route.gps[curPos - 1].longitude) * value;
           const newCoord = {
-              lat: positions[curPos].lat - latDiff,
-              lng: positions[curPos].lng - lngDiff,
+              lat: route.gps[curPos].latitude - latDiff,
+              lng: route.gps[curPos].longitude - lngDiff,
           };
           setCoordinate(newCoord);
       }
@@ -70,7 +59,9 @@ const props = useSpring({
   };
 
   const animate = (newCurPos: number) => {
-      const newRot = getRotation(positions[curPos], positions[newCurPos]);
+      const newRot = getRotation({
+        lat: route.gps[curPos].latitude, lng: route.gps[curPos].longitude},
+        {lat: route.gps[newCurPos].latitude, lng: route.gps[newCurPos].longitude});
       setCurRot(newRot);
       setCurPos(newCurPos);
       props.val.reset();
@@ -79,7 +70,7 @@ const props = useSpring({
 
   const doUpdate = () => {
       const newCurPos = curPos + 1;
-      if (newCurPos >= positions.length) return;
+      if (newCurPos >= route.gps.length) return;
 
       animate(newCurPos);
   };
