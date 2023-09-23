@@ -55,7 +55,7 @@ const SelectRoute = ()=>{
             </button>
       </div>
         ) : (
-          <div>
+          <div className="containerListRoutes">
             {
               !runningSimulate && (
                 <div className="listRoutes">

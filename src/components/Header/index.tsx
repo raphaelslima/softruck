@@ -46,7 +46,7 @@ const Header = () => {
         />
       </div>
       <div className='internationalization'>
-        <button ref={btnPT} className='selected' onClick={()=> handleChangeLanguage('pt')}>PT</button>
+        <button ref={btnPT} onClick={()=> handleChangeLanguage('pt')}>PT</button>
         <button ref={btnESP} onClick={()=> handleChangeLanguage('esp')}>ESP</button>
         <button ref={btnEN} onClick={()=> handleChangeLanguage('en')}>ING</button>
       </div>
