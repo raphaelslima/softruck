@@ -31,7 +31,7 @@ const resources = {
             "Horario de partida": "Horário de partida:",
             "Data de chegada" : "Data de chegada:",
             "Horario de chegada": "Horário de chegada:",
-            "Velocidade": "velocidad",
+            "Velocidade": "Velocidade",
             "Parar simulacao": "Parar simulação"
         }
     },
