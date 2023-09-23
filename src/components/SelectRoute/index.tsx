@@ -15,7 +15,7 @@ import ItemList from "../ItemList";
 import data from '../../api/frontend_data_gps.json';
 
 //Types
-import { Course } from "../../interfaces/course";
+import { Route } from "../../interfaces/route";
 
 //Context
 import { RouteContext } from "../../context/RouteContext";
@@ -24,18 +24,21 @@ const SelectRoute = ()=>{
 
   const {t} = useTranslation();
   const [showSelectRoute, setShowSelectRoute] = useState(true);
-  const [routes, setRoutes] = useState<Course[]>([]);
+  const [routes, setRoutes] = useState<Route[]>([]);
   const {runningSimulate} = useContext(RouteContext);
 
   useEffect(()=>{
-    const newRoutesArray: Course[] = []
-    data.courses.forEach((course)=>{
+    const newRoutesArray: Route[] = []
+    data.courses.forEach((route)=>{
       newRoutesArray.push({
-        start_at: course.start_at,
-        end_at: course.end_at,
-        distance: course.distance,
-        duration: course.duration,
-        gps: course.gps
+        speed_max: route.speed_max,
+        course: {
+          start_at: route.start_at,
+        end_at: route.end_at,
+        distance: route.distance,
+        duration: route.duration,
+        gps: route.gps
+        }
       })
     })
     setRoutes(newRoutesArray)

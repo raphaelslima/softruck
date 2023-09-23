@@ -1,23 +1,26 @@
 import { useState, createContext, Dispatch, SetStateAction, ReactNode } from "react";
 
-import { Course } from "../interfaces/course";
+import { Route } from "../interfaces/route";
 
 export interface routeContextInterface{
-  route: Course,
-  setRoute: Dispatch<SetStateAction<Course>>,
+  route: Route,
+  setRoute: Dispatch<SetStateAction<Route>>,
   runningSimulate: boolean,
   setRunningSimulate: Dispatch<SetStateAction<boolean>>
 }
 
 const defaultSate = {
   route: {
-    start_at: '',
+    speed_max: 0,
+    course : {
+      start_at: '',
     end_at: '',
     distance: 0,
     duration: 0,
     gps: []
+    }
   },
-  setRoute: (route: Course) => route,
+  setRoute: (route: Route) => route,
   runningSimulate: false,
   setRunningSimulate: (runningSimulate: boolean) => runningSimulate
 } as routeContextInterface
@@ -30,12 +33,15 @@ type RouteProviderProps = {
 
 export default function RouteProvider({children} : RouteProviderProps){
 
-  const [route, setRoute] = useState<Course>({
-    start_at: '',
+  const [route, setRoute] = useState<Route>({
+    speed_max: 0,
+    course : {
+      start_at: '',
     end_at: '',
     distance: 0,
     duration: 0,
     gps: []
+    }
   })
 
   const [runningSimulate, setRunningSimulate] = useState(false);

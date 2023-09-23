@@ -34,27 +34,32 @@ useEffect(() => {
   if(runningSimulate){
     setTimeout(() => {
       doUpdate();
-      if(route.gps[curPos]) setSpeed(formatSpeed(route.gps[curPos].speed));
-  }, 1500);
+      if(route.course.gps[curPos]) setSpeed(formatSpeed(route.course.gps[curPos].speed));
+  }, route.course.gps[curPos] ? timeUpdate() : 3000);
   } else{
     setCurPos(0);
   }
 }, [route, curPos, runningSimulate]);
 
+
+const timeUpdate = () => {
+  if(speed === 0) return 3000
+  return route.speed_max*1000/speed
+}
+
 const doUpdate = () => {
-  if (curPos + 1 >= route.gps.length){
+  if (curPos + 1 >= route.course.gps.length){
     setRunningSimulate(false);
     return;
   }
 
   const newRot = getRotation({
-    lat: route.gps[curPos].latitude, lng: route.gps[curPos].longitude},
-    {lat: route.gps[curPos + 1].latitude, lng: route.gps[curPos + 1].longitude});
+    lat: route.course.gps[curPos].latitude, lng: route.course.gps[curPos].longitude},
+    {lat: route.course.gps[curPos + 1].latitude, lng: route.course.gps[curPos + 1].longitude});
   setCurRot(newRot);
   setCurPos(curPos + 1);
   props.val.reset();
   props.val.start();
-
 };
 
 
@@ -75,12 +80,12 @@ const props = useSpring({
       const value = props.val.get();
       if (curPos > 0) {
           const latDiff =
-              (route.gps[curPos].latitude - route.gps[curPos - 1].latitude) * value;
+              (route.course.gps[curPos].latitude - route.course.gps[curPos - 1].latitude) * value;
           const lngDiff =
-              (route.gps[curPos].longitude - route.gps[curPos - 1].longitude) * value;
+              (route.course.gps[curPos].longitude - route.course.gps[curPos - 1].longitude) * value;
           const newCoord = {
-              lat: route.gps[curPos].latitude - latDiff,
-              lng: route.gps[curPos].longitude - lngDiff,
+              lat: route.course.gps[curPos].latitude - latDiff,
+              lng: route.course.gps[curPos].longitude - lngDiff,
           };
           setCoordinate(newCoord);
       }

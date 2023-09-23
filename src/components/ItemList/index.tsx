@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import '../../styles/itemList.scss';
 
 //Interface
-import { Course } from "../../interfaces/course";
+import { Route } from "../../interfaces/route";
 
 //Helpers
 import {formatDuration} from '../../helpers/formatDuration';
@@ -17,7 +17,7 @@ import {formatTime} from '../../helpers/formatTime';
 import { RouteContext } from "../../context/RouteContext";
 
 interface PropsItemList{
-  routeSelected: Course,
+  routeSelected: Route,
   setShowSelectRoute: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -30,7 +30,7 @@ const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
 
   const {t} = useTranslation();
 
-  const handleSimulateRoute = (routeSelected: Course) => {
+  const handleSimulateRoute = (routeSelected: Route) => {
     setShowSelectRoute(true);
     setRunningSimulate(true);
     if(routeSelected) setRoute(routeSelected);
@@ -41,25 +41,25 @@ const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
       <div className="containerTitle">
         <div>
           <h3 className="title">{t('Origem')}</h3>
-          <p>{`${routeSelected.gps[0].address}`}</p>
+          <p>{`${routeSelected.course.gps[0].address}`}</p>
         </div>
         <div>
           <h3 className="title">{t('Destino')}</h3>
-          <p> {`${routeSelected.gps[routeSelected.gps.length - 1].address}`}</p>
+          <p> {`${routeSelected.course.gps[routeSelected.course.gps.length - 1].address}`}</p>
         </div>
       </div>
       <div className="details">
         <div className="detalsItem">
-          <span>{t('Duracao')} {`${formatDuration(routeSelected.duration)}`}</span>
-          <span>{t('Distancia')} {`${formatDistance(routeSelected.distance)}`}</span>
+          <span>{t('Duracao')} {`${formatDuration(routeSelected.course.duration)}`}</span>
+          <span>{t('Distancia')} {`${formatDistance(routeSelected.course.distance)}`}</span>
         </div>
         <div className="detalsItem">
-          <span>{t('Data de partida')} {`${formatDate(routeSelected.start_at)}`}</span>
-          <span>{t('Horario de partida')} {`${formatTime(routeSelected.start_at)}`}</span>
+          <span>{t('Data de partida')} {`${formatDate(routeSelected.course.start_at)}`}</span>
+          <span>{t('Horario de partida')} {`${formatTime(routeSelected.course.start_at)}`}</span>
         </div>
         <div className="detalsItem">
-          <span>{t('Data de chegada')} {`${formatDate(routeSelected.end_at)}`}</span>
-          <span>{t('Horario de chegada')} {`${formatTime(routeSelected.end_at)}`}</span>
+          <span>{t('Data de chegada')} {`${formatDate(routeSelected.course.end_at)}`}</span>
+          <span>{t('Horario de chegada')} {`${formatTime(routeSelected.course.end_at)}`}</span>
         </div>
       </div>
       <div className="btnSimulateContainer">
