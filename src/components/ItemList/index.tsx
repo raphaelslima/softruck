@@ -1,39 +1,39 @@
-import { useContext } from "react"
-import { useTranslation } from "react-i18next"
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 //Style
-import '../../styles/itemList.scss'
+import '../../styles/itemList.scss';
 
 //Interface
-import { Course } from "../../interfaces/course"
+import { Course } from "../../interfaces/course";
 
 //Helpers
-import {formatDuration} from '../../helpers/formatDuration'
-import {formatDistance} from '../../helpers/formatDistance'
-import {formatDate} from '../../helpers/formatDate'
-import {formatTime} from '../../helpers/formatTime'
+import {formatDuration} from '../../helpers/formatDuration';
+import {formatDistance} from '../../helpers/formatDistance';
+import {formatDate} from '../../helpers/formatDate';
+import {formatTime} from '../../helpers/formatTime';
 
 //Context
-import { RouteContext } from "../../context/RouteContext"
+import { RouteContext } from "../../context/RouteContext";
 
 interface PropsItemList{
-  routeSelected: Course
+  routeSelected: Course,
   setShowSelectRoute: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 //Icons
-import {AiOutlineDoubleRight} from 'react-icons/ai'
+import {AiOutlineDoubleRight} from 'react-icons/ai';
 
 const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
 
-  const {setRoute, setRunningSimulate} = useContext(RouteContext)
+  const {setRoute, setRunningSimulate} = useContext(RouteContext);
 
-  const {t} = useTranslation()
+  const {t} = useTranslation();
 
   const handleSimulateRoute = (routeSelected: Course) => {
-    setShowSelectRoute(true)
-    setRunningSimulate(true)
-    if(routeSelected) setRoute(routeSelected)
+    setShowSelectRoute(true);
+    setRunningSimulate(true);
+    if(routeSelected) setRoute(routeSelected);
   };
 
   return(
@@ -69,4 +69,4 @@ const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
   )
 }
 
-export default ItemList
+export default ItemList;

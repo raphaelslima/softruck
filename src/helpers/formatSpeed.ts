@@ -1,3 +1,3 @@
 export const formatSpeed = (speed: number)=> {
-  return Math.round(speed)
+  return Math.round(speed);
 }

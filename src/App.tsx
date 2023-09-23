@@ -1,7 +1,7 @@
 //Components
-import Header from "./components/Header"
-import SelectRoute from "./components/SelectRoute"
-import Map from "./components/Map"
+import Header from "./components/Header";
+import SelectRoute from "./components/SelectRoute";
+import Map from "./components/Map";
 
 function App() {
 

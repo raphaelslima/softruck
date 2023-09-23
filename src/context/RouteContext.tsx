@@ -38,7 +38,7 @@ export default function RouteProvider({children} : RouteProviderProps){
     gps: []
   })
 
-  const [runningSimulate, setRunningSimulate] = useState(false)
+  const [runningSimulate, setRunningSimulate] = useState(false);
 
   return(
     <RouteContext.Provider value={{route, setRoute, runningSimulate, setRunningSimulate}}>

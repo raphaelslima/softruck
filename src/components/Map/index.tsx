@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useSpring } from "@react-spring/web";
 
 //Styles
-import "../../styles/map.scss"
+import "../../styles/map.scss";
 
 //Context
 import { RouteContext } from "../../context/RouteContext";
@@ -37,7 +37,7 @@ useEffect(() => {
       if(route.gps[curPos]) setSpeed(formatSpeed(route.gps[curPos].speed));
   }, 1500);
   } else{
-    setCurPos(0)
+    setCurPos(0);
   }
 }, [route, curPos, runningSimulate]);
 

@@ -3,7 +3,6 @@ import LanguageDetector, {
 } from "i18next-browser-languagedetector";
 
 export const languageDetectorOptions = {
-  // order and from where user language should be detected
   order: [
       "querystring",
       "cookie",
@@ -15,7 +14,6 @@ export const languageDetectorOptions = {
       "subdomain",
   ],
 
-  // keys or params to lookup language from
   lookupQuerystring: "lng",
   lookupCookie: "i18next",
   lookupLocalStorage: "i18nextLng",
@@ -23,9 +21,8 @@ export const languageDetectorOptions = {
   lookupFromPathIndex: 0,
   lookupFromSubdomainIndex: 0,
 
-  // cache user language on
   caches: ["localStorage", "cookie"],
-  excludeCacheFor: ["cimode"], // languages to not persist (cookie, localStorage)
+  excludeCacheFor: ["cimode"],
 };
 
 export const languageDetector = new LanguageDetector();
@@ -38,9 +35,6 @@ languageDetector.addDetector({
   },
 
   cacheUserLanguage(lng, options) {
-      // options -> are passed in options
-      // lng -> current language, will be called after init and on changeLanguage
-      // store it
       console.log("cacheUserLanguage", lng, options);
   },
 });

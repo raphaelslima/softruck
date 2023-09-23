@@ -1,31 +1,31 @@
-import { useTranslation } from "react-i18next"
-import {useState, useEffect, useContext} from 'react'
+import { useTranslation } from "react-i18next";
+import {useState, useEffect, useContext} from 'react';
 
 //Style
-import '../../styles/selectRoute.scss'
+import '../../styles/selectRoute.scss';
 
 //icons
-import {FaMapMarkerAlt} from 'react-icons/fa'
-import {AiFillCloseCircle} from 'react-icons/ai'
+import {FaMapMarkerAlt} from 'react-icons/fa';
+import {AiFillCloseCircle} from 'react-icons/ai';
 
 //Components
-import ItemList from "../ItemList"
+import ItemList from "../ItemList";
 
 //Database
-import data from '../../api/frontend_data_gps.json'
+import data from '../../api/frontend_data_gps.json';
 
 //Types
-import { Course } from "../../interfaces/course"
+import { Course } from "../../interfaces/course";
 
 //Context
-import { RouteContext } from "../../context/RouteContext"
+import { RouteContext } from "../../context/RouteContext";
 
 const SelectRoute = ()=>{
 
-  const {t} = useTranslation()
-  const [showSelectRoute, setShowSelectRoute] = useState(true)
-  const [routes, setRoutes] = useState<Course[]>([])
-  const {runningSimulate} = useContext(RouteContext)
+  const {t} = useTranslation();
+  const [showSelectRoute, setShowSelectRoute] = useState(true);
+  const [routes, setRoutes] = useState<Course[]>([]);
+  const {runningSimulate} = useContext(RouteContext);
 
   useEffect(()=>{
     const newRoutesArray: Course[] = []
