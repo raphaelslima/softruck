@@ -8,10 +8,10 @@ import '../../styles/header.scss';
 
 const Header = () => {
 
-  const {i18n} = useTranslation()
+  const {i18n} = useTranslation();
 
   const handleChangeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
+    i18n.changeLanguage(lng);
   }
 
   return (

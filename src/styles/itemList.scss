@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  border-bottom: 1px solid $color-primary-gray;
+  border-top: 1px solid $color-primary-gray;
   padding-top: 1rem;
 
   .containerTitle{
@@ -54,6 +54,16 @@
       border: none;
       border-radius: 8px;
       transition: all .5s;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: .25rem;
+
+      .rightArrow{
+        font-size: 16;
+        color: $color-primary-white;
+      }
     }
 
     button:hover{
@@ -61,6 +71,12 @@
       color: $color-primary-blue;
       background: $color-primary-white;
       border: 1px solid $color-primary-blue;
+
+      .rightArrow{
+        color: $color-primary-blue;
+      }
     }
+
+
   }
 }

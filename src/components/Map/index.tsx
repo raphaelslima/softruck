@@ -1,6 +1,6 @@
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 import { useSpring } from "@react-spring/web";
 
 //Styles
@@ -13,16 +13,17 @@ import { RouteContext } from "../../context/RouteContext";
 import { formatSpeed } from "../../helpers/formatSpeed";
 
 //Icons
-import {AiOutlineClose} from 'react-icons/ai'
+import {AiOutlineClose} from 'react-icons/ai';
 
 const Map = ()=> {
   const [googleMap, setGoogleMap] = useState<google.maps.Map>();
-  const {route, runningSimulate, setRunningSimulate} = useContext(RouteContext)
+  const {route, runningSimulate, setRunningSimulate} = useContext(RouteContext);
   const [curPos, setCurPos] = useState(0);
   const [curRot, setCurRot] = useState(0);
   const [speed, setSpeed] = useState(0);
   const [coordinate, setCoordinate] = useState({lat: -19.939549, lng: -43.938730});
-  const {t} = useTranslation()
+
+  const {t} = useTranslation();
 
 type Position = {
   lat: number;
@@ -33,7 +34,7 @@ useEffect(() => {
   if(runningSimulate){
     setTimeout(() => {
       doUpdate();
-      if(route.gps[curPos]) setSpeed(formatSpeed(route.gps[curPos].speed))
+      if(route.gps[curPos]) setSpeed(formatSpeed(route.gps[curPos].speed));
   }, 1500);
   } else{
     setCurPos(0)
@@ -42,8 +43,8 @@ useEffect(() => {
 
 const doUpdate = () => {
   if (curPos + 1 >= route.gps.length){
-    setRunningSimulate(false)
-    return
+    setRunningSimulate(false);
+    return;
   }
 
   const newRot = getRotation({

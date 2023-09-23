@@ -5,9 +5,11 @@
     background-color: $color-primary-white;
     height: 100px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .headerContainer{
-
       width: 100%;
       max-width: 1280px;
       display: flex;
@@ -43,6 +45,18 @@
         }
     }
     }
+}
+
+@media screen and (min-width: 1280px) {
+  .header{
+
+    .headerContainer{
+
+      .internationalization{
+        gap: .75rem;
+    }
+    }
+}
 }
 
 

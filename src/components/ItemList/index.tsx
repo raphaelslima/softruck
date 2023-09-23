@@ -21,6 +21,9 @@ interface PropsItemList{
   setShowSelectRoute: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+//Icons
+import {AiOutlineDoubleRight} from 'react-icons/ai'
+
 const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
 
   const {setRoute, setRunningSimulate} = useContext(RouteContext)
@@ -60,7 +63,7 @@ const ItemList = ({routeSelected, setShowSelectRoute}: PropsItemList)=>{
         </div>
       </div>
       <div className="btnSimulateContainer">
-        <button onClick={() => handleSimulateRoute(routeSelected)}>Simular Rota</button>
+        <button onClick={() => handleSimulateRoute(routeSelected)}>Simular Rota <AiOutlineDoubleRight className='rightArrow'/></button>
       </div>
     </li>
   )

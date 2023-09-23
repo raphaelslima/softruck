@@ -47,7 +47,7 @@ const SelectRoute = ()=>{
         showSelectRoute && !runningSimulate ? (
           <div className="containerBtnSelect">
             <button className="btnSelectRoute" onClick={()=> setShowSelectRoute(false)}>
-              <FaMapMarkerAlt color='#ff0000' />
+              <FaMapMarkerAlt color='#ff0000' size={16}/>
               {t('Selecione trajeto')}
             </button>
       </div>

@@ -3,7 +3,6 @@
 .containerRoutes{
   width: 100%;
   height: 100vh;
-  max-width: 1280px;
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -25,9 +24,15 @@
       border-radius: 8px;
       border: none;
       background: $color-primary-white;
+      border: 1px solid #000;
       font-weight: 700;
       display: flex;
-      gap: .25rem
+      width: 150px;
+      height: 50px;
+      gap: .25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -44,10 +49,6 @@
     border-radius: 8px;
     overflow-y: scroll;
     margin: 1rem;
-
-    listRoutes::-webkit-scrollbar{
-      display: none;
-    }
 
     .headerListRoutes{
       width: 100%;
@@ -66,9 +67,19 @@
 
       .titleRoutes{
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 1.25rem;
       }
     }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .containerRoutes{
+
+    .listRoutes{
+      margin-top: 2rem;
+    }
+
   }
 }
 
