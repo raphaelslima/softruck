@@ -139,6 +139,23 @@ const props = useSpring({
                   options={{ map: googleMap}}
               />
           )}
+
+          {
+            runningSimulate && (
+              <Marker
+                  position={{
+                    lat: route.course.gps[route.course.gps.length - 1].latitude,
+                    lng: route.course.gps[route.course.gps.length - 1].longitude
+                  }}
+                  options={{
+                    label:{
+                      text: 'Destino final',
+                      className: 'mapLabel'
+                    }
+                  }}
+              />
+            )
+          }
       </GoogleMap>
       </LoadScript>
     </div>
