@@ -16,7 +16,8 @@ const resources = {
             "Data de chegada" : "Arrival date:",
             "Horario de chegada": "Arrival time:",
             "Velocidade": "Speed",
-            "Parar simulacao": "Stop simulate"
+            "Parar simulacao": "Stop simulate",
+            "Chegada": "Arrival:"
         }
     },
     pt: {
@@ -32,7 +33,8 @@ const resources = {
             "Data de chegada" : "Data de chegada:",
             "Horario de chegada": "Horário de chegada:",
             "Velocidade": "Velocidade",
-            "Parar simulacao": "Parar simulação"
+            "Parar simulacao": "Parar simulação",
+            "Chegada": "Chegada:"
         }
     },
     esp: {
@@ -48,7 +50,8 @@ const resources = {
           "Data de chegada" : "Fecha de llegada:",
           "Horario de chegada": "Hora de llegada:",
           "Velocidade": "Velocidade",
-          "Parar simulacao": "Detener simulación"
+          "Parar simulacao": "Detener simulación",
+          "Chegada": "Llegada:"
       }
   },
 }

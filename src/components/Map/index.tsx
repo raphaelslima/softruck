@@ -11,6 +11,7 @@ import { RouteContext } from "../../context/RouteContext";
 
 //Helpers
 import { formatSpeed } from "../../helpers/formatSpeed";
+import { formatTimeArrival } from "../../helpers/formartTimeArrival";
 
 //Icons
 import {AiOutlineClose} from 'react-icons/ai';
@@ -99,6 +100,10 @@ const props = useSpring({
           <div>
             <div className="containerShowSpeed">
               <span>{t("Velocidade")}: {speed} Km/h</span>
+              <span>{t("Chegada")}
+              { route.course.gps && formatTimeArrival(route.course.gps[curPos].acquisition_time,
+                route.course.gps[route.course.gps.length - 1].acquisition_time)}
+                </span>
             </div>
             <div className="containerStopSimulate">
               <button onClick={()=> setRunningSimulate(false)}>{t('Parar simulacao')} <AiOutlineClose size={16}/></button>
