@@ -33,9 +33,6 @@ Clique no liink:
 
 - Padrão de commits: Inicia com um pré-fixo (fix ou feat) seguida de uma mensagem sobre o que foi realizada naquele commit.
 
-feat: Adição de nova feature
-fix: Correção de bugs
-
 ### Criação do layout:
 
 Para criar o layout do meu teste técnico utilizei uma palheta de cores próxima ao do site da softruck para dar personalidade ao projeto e me baseie no Google Maps para melhorar a experiência do usuário, pois o Google Maps é algo que as pessoas usam muito em seu cotidiano, logo já estão acostumadas ao seu uso e isso facilita o uso da minha aplicação consequentemente.
