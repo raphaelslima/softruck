@@ -2,7 +2,7 @@
 
 ## Como rodar o projeto?
 
-Clique no liink: https://softruck-frontend.vercel.app/
+Clique no link: https://softruck-frontend.vercel.app/
 
 ## Tecnologias utilizadas:
 
