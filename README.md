@@ -1,8 +1,8 @@
 # Teste tecníco - Raphael Lima
 
-## Como rodar o projeto:
+## Como rodar o projeto?
 
-Clique no liink:
+Clique no liink: https://softruck-frontend.vercel.app/
 
 ## Tecnologias utilizadas:
 
