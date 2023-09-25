@@ -26,10 +26,10 @@ Clique no liink:
 
 ### Organização das branchs:
 
-1) master: Branch de setup
-2) main: Branch de produção.
+1) master: Branch para produção
+2) develop: Branch de desenvolvimento
 3) hotfix: Branch de bugs em produção.
-4) develop: Branch de desenvolvimento
+4) main: Branch de testes para o desenvolvimento.
 
 - Padrão de commits: Inicia com um pré-fixo (fix ou feat) seguida de uma mensagem sobre o que foi realizada naquele commit.
 
