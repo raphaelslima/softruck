@@ -16,6 +16,9 @@ import { formatTimeArrival } from "../../helpers/formartTimeArrival";
 //Icons
 import {AiOutlineClose} from 'react-icons/ai';
 
+//Interfaces
+import { Position } from "../../interfaces/position";
+
 const Map = ()=> {
   const [googleMap, setGoogleMap] = useState<google.maps.Map>();
   const {route, runningSimulate, setRunningSimulate} = useContext(RouteContext);
@@ -25,11 +28,6 @@ const Map = ()=> {
   const [coordinate, setCoordinate] = useState({lat: -19.939549, lng: -43.938730});
 
   const {t} = useTranslation();
-
-type Position = {
-  lat: number;
-  lng: number;
-};
 
 useEffect(() => {
   if(runningSimulate){
